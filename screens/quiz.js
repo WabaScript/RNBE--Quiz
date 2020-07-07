@@ -38,7 +38,7 @@ export default function Quiz({ route }) {
     const question = questions[activeQuIndex];
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: route.params?.color} ]}>
             <StatusBar barStyle='light-content' />
             <SafeAreaView style={styles.safearea}>
                 <View>

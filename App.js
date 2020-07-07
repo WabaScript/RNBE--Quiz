@@ -16,7 +16,12 @@ const MainStack = () => (
       name="Quiz"
       component={Quiz}
       options={({route}) => ({
-        headerTitle: route.params?.title ?? 'title'
+        headerTitle: route.params?.title ?? 'title',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: route.params?.color,
+          shadowColor: 'transparent'
+        }
       })
     }
     />
