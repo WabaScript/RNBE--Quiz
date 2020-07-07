@@ -4,9 +4,9 @@
     "slug": "quiz",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/check.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/check.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
