@@ -1,11 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, SafeAreaView } from 'react-native'
 import TEMP_QUESTION from '../data/computers';
 import {Button, ButtonContainer } from '../components/button';
+import { Alert } from '../components/Alert'
 
-const question = TEMP_QUESTION[0];
 
 export default function Quiz() {
+    const [correctCount, setCorrectCount] = useState(0);
+    const [totalCount, setTotalCount] = useState(TEMP_QUESTION.length);
+    const [activeQuIndex, setActiveQuIndex] = useState(0);
+    const [answered, setAnswered] = useState(false);
+    const [answerCorrect, setAnswerCorrect] = useState(false);
+
+
+    const nextQuestion = () => {
+        let next = activeQuIndex + 1
+        if (next >= totalCount){
+            setActiveQuIndex(0)
+        } else {
+            setActiveQuIndex(next)
+        }
+        setAnswered(false)
+    }
+
+    const answer = (correct) => {
+        setAnswered(true)
+        if (correct) {
+            setCorrectCount(correctCount + 1)
+            setAnswerCorrect(true)
+        } else {
+            setAnswerCorrect(false)
+        }
+        setTimeout(() => nextQuestion(), 750);
+    }
+
+    const question = TEMP_QUESTION[activeQuIndex];
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle='light-content' />
@@ -14,12 +44,13 @@ export default function Quiz() {
                 <Text style={styles.text}> {question.question} </Text>
                 <ButtonContainer>
                     {question.answers.map(x => (
-                        <Button key={x.id} text={x.text} onPress={() => alert("hi")} />
+                        <Button key={x.id} text={x.text} onPress={() => answer(x.correct)} />
                     ))}
                 </ButtonContainer>
                 </View>
-                <Text style={styles.text}> 0/3 </Text>
+                <Text style={styles.text}> {correctCount}/{totalCount} </Text>
             </SafeAreaView>
+            <Alert visible={answered} correct={answerCorrect} />
         </View>
     );
 }
