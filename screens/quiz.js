@@ -5,13 +5,12 @@ import {Button, ButtonContainer } from '../components/button';
 import { Alert } from '../components/Alert'
 
 
-export default function Quiz() {
+export default function Quiz({ route }) {
     const [correctCount, setCorrectCount] = useState(0);
-    const [totalCount, setTotalCount] = useState(TEMP_QUESTION.length);
+    const [totalCount, setTotalCount] = useState((route.params?.questions ?? []).length);
     const [activeQuIndex, setActiveQuIndex] = useState(0);
     const [answered, setAnswered] = useState(false);
     const [answerCorrect, setAnswerCorrect] = useState(false);
-
 
     const nextQuestion = () => {
         let next = activeQuIndex + 1
@@ -34,7 +33,9 @@ export default function Quiz() {
         setTimeout(() => nextQuestion(), 750);
     }
 
-    const question = TEMP_QUESTION[activeQuIndex];
+    // const question = TEMP_QUESTION[activeQuIndex];
+    const questions = route.params?.questions ?? [];
+    const question = questions[activeQuIndex];
 
     return (
         <View style={styles.container}>

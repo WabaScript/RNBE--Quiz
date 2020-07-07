@@ -10,9 +10,9 @@ export default ({navigation}) => (
     <ScrollView>
         <StatusBar barStyle="dark-content" />
         <Button title="Go to Quiz!" onPress={() => navigation.navigate('Quiz')} />
-        <RowItem name="Space" color="#c11e70" onPress={() => navigation.navigate('Quiz')} />
-        <RowItem name="Westerns" color="#a31773" onPress={() => navigation.navigate('Quiz')} />
-        <RowItem name="Computers" color="#900d84" onPress={() => navigation.navigate('Quiz')} />
-        <RowItem name="Misc." color="#73177e" onPress={() => navigation.navigate('Quiz')} />
+        <RowItem name="Space" color="#c11e70" onPress={() => navigation.navigate('Quiz', {title: 'Space', questions: spaceQuestions})} />
+        <RowItem name="Westerns" color="#a31773" onPress={() => navigation.navigate('Quiz', {title: 'Westerns', questions: westernQuestions})} />
+        <RowItem name="Computers" color="#900d84" onPress={() => navigation.navigate('Quiz', {title: 'Computers', questions: computersQuestions})} />
+        <RowItem name="Misc." color="#73177e" onPress={() => navigation.navigate('Quiz', {title: 'Misc.', questions: miscQuestions})} />
     </ScrollView>
 );

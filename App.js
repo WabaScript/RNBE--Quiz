@@ -15,7 +15,10 @@ const MainStack = () => (
     <Stack.Screen
       name="Quiz"
       component={Quiz}
-      initialParams={{ user: 'me' }}
+      options={({route}) => ({
+        headerTitle: route.params?.title ?? 'title'
+      })
+    }
     />
   </Stack.Navigator>
 );
