@@ -58,7 +58,7 @@ export default function Quiz() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'lightblue',
+      backgroundColor: '#c11e70',
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: 20
